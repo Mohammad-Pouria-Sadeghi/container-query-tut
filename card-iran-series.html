@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Card</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+      }
+
+      .header {
+        text-align: center;
+      }
+
+      .card-container {
+        display: grid;
+        padding: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+        gap: 1rem;
+      }
+
+      .item {
+        container-type: inline-size;
+        display: flex;
+      }
+
+      .card {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        min-height: 570px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .card img {
+        border-radius: 10px;
+        width: 214px;
+        height: 300px;
+      }
+
+      .card .img {
+        border-radius: 10px;
+        width: 214px;
+        height: 300px;
+      }
+
+      .card-title {
+        font-size: 24px;
+        color: #333333;
+        margin: 10px 0;
+      }
+
+      .card-text {
+        font-size: 16px;
+        color: #666666;
+      }
+
+      .card-button {
+        background-color: #007bff;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .card-button:hover {
+        background-color: #0056b3;
+      }
+
+      h1 {
+        text-transform: uppercase;
+      }
+
+      /* .item:first-child {
+        grid-column: span 1;
+      } */
+
+      @container (width > 350px) {
+        .card {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          height: auto;
+          min-height: unset;
+        }
+
+        .card-text,
+        .card-title {
+          font-size: clamp(14px, 10px + 2.33cqw, 20px);
+        }
+
+        .card img {
+          width: 50%;
+        }
+
+        .card .img {
+          width: 50% !important;
+        }
+      }
+
+      .img {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>best iranian series of all time</h1>
+      <p>use responsive mode for better understanding</p>
+      <p>pay attention to container queries break points</p>
+      <div class="width-display">
+        Width card:
+        <span id="width-value">250</span>
+        px
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="item">
+        <div class="card">
+          <img src="./barareh-214x300.jpg" alt="Image" />
+          <div class="card__text">
+            <h2 class="card-title">Shabhaye Barareh</h2>
+            <p class="card-text">
+              A comedic series set in the fictional village of Barareh, showcasing the humorous and satirical life of its quirky residents.
+            </p>
+            <a href="#" class="card-button">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="card">
+          <img src="./59580-207x272.jpg" alt="Image" />
+          <div class="card__text">
+            <h2 class="card-title">Ekhrajiha</h2>
+            <p class="card-text">A comedy-drama film about a group of misfits who join the military, exploring their adventures and camaraderie.</p>
+            <a href="#" class="card-button">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="card">
+          <img src="./mard-1000-chehre-min-214x300.jpg" alt="Image" />
+          <div class="card__text">
+            <h2 class="card-title">Mard-1000-chehre</h2>
+            <p class="card-text">
+              A comedy series following the life of an ordinary man who accidentally gets involved in various disguises and adventures.
+            </p>
+            <a href="#" class="card-button">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.js"
+      integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc="
+      crossorigin="anonymous"></script>
+    <script>
+      $(function () {
+        function updateWidth() {
+          var newWidth = $(".item").innerWidth();
+          $("#width-value").text(newWidth);
+        }
+
+        updateWidth();
+
+        $(window).on("resize", function () {
+          updateWidth();
+        });
+
+        const resizeObserver = new ResizeObserver(updateWidth);
+        resizeObserver.observe(document.querySelector(".item"));
+      });
+    </script>
+  </body>
+</html>
